@@ -1,0 +1,117 @@
+{{!
+  This file is part of Moodle - http://moodle.org/
+
+  Moodle is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Moodle is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+  @template lytix_measure/widget
+
+  Lytix Gauge Widget
+
+  This widget renders a graph resembling a tachometer, indicating performance.
+
+  Classes required for JS:
+  * lytix_measure/gauge
+
+  Context variables required for this template:
+  See example below.
+
+  Example context (json):
+  {
+      "Name": "Student Name",
+      "StudentCount": 42,
+      "ActivityCount": {
+          "Past": 12,
+          "Future": 16
+      },
+      "Scores": {
+          "Activity": [ "total", "Quiz" ],
+          "Mine": [ 12.5, 14 ],
+          "Lowest": [ 12, 11 ],
+          "Highest": [ 15, 14.5 ],
+          "Avg": [ 12, 12 ],
+          "Max": [15, 15 ]
+      }
+  }
+}}
+<div class='col col-sm-7'>
+    <svg class='d-block' viewBox='{{{viewBox.min}}} {{{viewBox.min}}} {{{viewBox.length}}} {{{viewBox.height}}}'>
+        {{#base}}
+        <path class='base' d='
+            M {{{start.x}}} {{{start.y}}}
+            A {{{radius}}} {{{radius}}} 0 1 1 {{{end.x}}} {{{end.y}}}'
+            stroke-width='{{{strokeWidth}}}'
+        />
+        {{/base}}
+        <g class='arcs' stroke-width='{{{strokeWidth}}}'>
+            {{#arcs}}
+            <path d='
+                M {{{start.x}}} {{{start.y}}}
+                A {{{radius}}} {{{radius}}} 0 1 1 {{{end.x}}} {{{end.y}}}'
+                stroke-dasharray='{{{dash.fullLength}}}'
+                stroke-dashoffset='{{{dash.length}}}'
+            />
+            {{/arcs}}
+        </g>
+        <g class='needle'>
+            <line x1='0' y1='0' x2='{{{needle.x}}}' y2='{{{needle.y}}}' stroke='#444' stroke-width='2' transform='rotate({{{needle.angle}}})'/>
+            <circle cx='0' cy='0' r='{{{needle.r}}}' fill='#444'/>
+        </g>
+        {{#labels}}
+        <text x='{{{x}}}' y='{{{y}}}'>{{{number}}}%</text>
+        {{/labels}}
+        <g class='caption'>
+            {{#captions}}
+            <text x='{{{x}}}' y='{{{y}}}' dx='{{{xShift}}}em' dy='{{{yShift}}}em'><tspan class='value'>{{value}}</tspan><tspan class='unit'> %</tspan><tspan class='title'> {{text}}</tspan></text>
+            {{/captions}}
+        </g>
+    </svg>
+    <form id='gauge-filter' class='d-inline-flex flex-wrap'>
+        <label for='gauge-filter-total' class='font-weight-bold'>
+            <input id='gauge-filter-total' type='radio' name='gauge-filter' checked data-activityindex='0'>&nbsp;{{total}}
+        </label>
+        {{#filter}}
+            <label class='pl-3' for='gauge-filter-{{{activityIndex}}}'>
+                <input id='gauge-filter-{{{activityIndex}}}' type='radio' name='gauge-filter' data-activityindex='{{{activityIndex}}}'>&nbsp;{{label}}
+            </label>
+        {{/filter}}
+    </form>
+</div>
+
+<div class='col-sm-5 pr-0 d-flex flex-column justify-content-center'>
+    {{^isteacher}}
+    <div class='greeting'>
+        <h4 class='font-weight-bold'>{{strings.hello}} {{name}}!</h4>
+        <p class='mb-0'>{{strings.personal_dashboard}}</p>
+    </div>
+    {{/isteacher}}
+
+    {{#isteacher}}
+    {{{summary}}}
+    <table class='table-borderless table-sm stats'>
+        <tr>
+            <td class='text-right py-0'>{{{StudentCount}}}</td>
+            <th class='pl-1 py-0 font-weight-light'>{{strings.total_students}}</th>
+        </tr>
+        <tr>
+            <td class='text-right py-0'>{{{ActivityCount.Past}}}</td>
+            <th class='pl-1 py-0 font-weight-light'>{{strings.number_previous_activities}}</th>
+        </tr>
+        <tr>
+            <td class='text-right py-0'>{{{ActivityCount.Future}}}</td>
+            <th class='pl-1 py-0 font-weight-light'>{{strings.number_open_activities}}</th>
+        </tr>
+    </table>
+    {{/isteacher}}
+</div>

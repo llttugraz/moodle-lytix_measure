@@ -1,0 +1,77 @@
+#gauge .stats {
+    max-height: 4em;
+    font-size: 1.3em;
+}
+
+#gauge .stats th {
+    line-height: 1;
+}
+
+#gauge .stats td {
+    font-size: 1.2em;
+}
+
+#gauge svg {
+    max-width: 480px;
+}
+
+#gauge path {
+    fill: none;
+}
+
+#gauge .base {
+    stroke: #eee;
+}
+
+#gauge .arcs {
+    stroke: #d92d2d;
+}
+
+#gauge .arcs path:nth-child(2) {
+    stroke: #ff7612;
+}
+
+#gauge .arcs path:nth-child(3) {
+    stroke: #fbe200;
+}
+
+#gauge text {
+    font-size: 1.2em;
+}
+
+#gauge .caption {
+    font-size: 1.8em;
+}
+
+#gauge .caption text:nth-child(3) .value,
+#gauge .caption text:nth-child(3) .unit {
+    fill: #d92d2d;
+}
+
+#gauge .caption text:nth-child(2) .value,
+#gauge .caption text:nth-child(2) .unit {
+    fill: #ff7612;
+}
+
+#gauge .caption text:nth-child(1) .value,
+#gauge .caption text:nth-child(1) .unit {
+    fill: #fbe200;
+}
+
+#gauge .caption .unit {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#gauge .caption .title {
+    font-size: 0.7em;
+}
+
+#gauge .greeting h4 {
+    font-size: 170%;
+}
+
+#gauge .greeting p {
+    font-size: 140%;
+}
+

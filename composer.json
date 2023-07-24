@@ -1,0 +1,25 @@
+{
+    "name": "llttugraz/moodle-lytix_measure",
+    "description": "Logs the interactions with the widgets.",
+    "keywords": [
+        "moodle",
+        "plugin",
+        "courses",
+        "users"
+    ],
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Guenther Moser",
+            "email": "moser@tugraz.at",
+			"role": "developer"
+        }
+    ],
+    "require": {
+        "moodle/moodle": "3.11 - 4.1",
+        "llttugraz/moodle-local_lytix": "dev-master",
+        "llttugraz/moodle-lytix_planner": "dev-main",
+        "llttugraz/moodle-lytix_helper": "dev-main",
+        "llttugraz/moodle-lytix_logs": "dev-main"
+    }
+}

@@ -1,0 +1,82 @@
+#gauge {
+
+    .stats {
+        max-height: 4em;
+        font-size: 1.3em;
+
+        th {
+            line-height: 1;
+        }
+        td {
+            font-size: 1.2em;
+        }
+    }
+
+    $outer: #d92d2d;
+    $middle: #ff7612;
+    $inner: #fbe200;
+
+    svg {
+        max-width: 480px; // bootstrap xl
+    }
+    path {
+        fill: none;
+    }
+    .base {
+        stroke: #eee;
+    }
+    .arcs {
+        stroke: $outer;
+        path {
+            &:nth-child(2) {
+                stroke: $middle;
+            }
+            &:nth-child(3) {
+                stroke: $inner;
+            }
+        }
+    }
+    text {
+        // the same size of <p> as given by Bootstrap
+        font-size: 1.2em;
+    }
+    .caption {
+        font-size: 1.8em;
+        text {
+            &:nth-child(3) {
+                .value,
+                .unit {
+                    fill: $outer;
+                }
+            }
+            &:nth-child(2) {
+                .value,
+                .unit {
+                    fill: $middle;
+                }
+            }
+            &:nth-child(1) {
+                .value,
+                .unit {
+                    fill: $inner;
+                }
+            }
+        }
+        .unit {
+            font-size: .8em;
+            font-weight: bold;
+        }
+        .title {
+            font-size: .7em;
+        }
+    }
+    .greeting {
+        h4 {
+            font-size: 170%;
+        }
+        p {
+            font-size: 140%;
+        }
+    }
+
+}
