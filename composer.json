@@ -18,8 +18,8 @@
     "require": {
         "moodle/moodle": "3.11 - 4.1",
         "llttugraz/moodle-local_lytix": "dev-master",
-        "llttugraz/moodle-lytix_planner": "dev-main",
-        "llttugraz/moodle-lytix_helper": "dev-main",
-        "llttugraz/moodle-lytix_logs": "dev-main"
+        "llttugraz/lytix_planner": "dev-main",
+        "llttugraz/lytix_helper": "dev-main",
+        "llttugraz/lytix_logs": "dev-main"
     }
 }
