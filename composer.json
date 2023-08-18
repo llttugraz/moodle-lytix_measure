@@ -1,5 +1,5 @@
 {
-    "name": "llttugraz/lytix_measure",
+    "name": "llttugraz-lytix/moodle-lytix_measure",
     "description": "Logs the interactions with the widgets.",
     "keywords": [
         "moodle",
@@ -18,8 +18,8 @@
     "require": {
         "moodle/moodle": "3.11 - 4.1",
         "llttugraz/moodle-local_lytix": "dev-master",
-        "llttugraz/lytix_planner": "dev-main",
-        "llttugraz/lytix_helper": "dev-main",
-        "llttugraz/lytix_logs": "dev-main"
+        "llttugraz-lytix/moodle-lytix_planner": "dev-main",
+        "llttugraz-lytix/moodle-lytix_helper": "dev-main",
+        "llttugraz-lytix/moodle-lytix_logs": "dev-main"
     }
 }
